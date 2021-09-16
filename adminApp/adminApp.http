@@ -42,5 +42,5 @@ POST http://94.237.53.66:30007/exists
 Content-Type: application/json
 
 {
-    "rfid":"1631776848266-2518d7ec"
+    "rfid":"1631782078031-fa9c5794"
 }
