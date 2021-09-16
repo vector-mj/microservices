@@ -23,7 +23,7 @@ app.post("/gate", async (req, res) => {
         })
     }
     try {
-        const result = await axios.post('http://admin-srv:8082/exists', { rfid: rfid })
+        const result = await axios.post('http://10.103.124.171:8081/exists', { rfid: rfid })
         if (result.data.user != null) {
             console.log(JSON.stringify({ rfid: rfid, time: new Date().toISOString(), type: gtype }))
             Client.hset("logs", `${randomBytes(4).toString('hex')}-${rfid}`, JSON.stringify({ rfid: rfid, time: new Date().toISOString(), type: gtype }))
@@ -43,7 +43,7 @@ app.post("/gate", async (req, res) => {
 app.get('/allLogs', (req, res) => {
     try {
         Client.hgetall("logs", (err, reply) => {
-            if (err || reply==null) {
+            if (err || reply == null) {
                 return res.send("Log not found")
             } else {
                 return res.send({
