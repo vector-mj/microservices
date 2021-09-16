@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: admin-depl
+      app: admin
   template:
     metadata:
       labels:
-        - app: admin-depl
+        - app: admin
     spec:
       containers:
         - name:

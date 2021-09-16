@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: log-depl
+      app: log
   template:
     metadata:
       labels:
-        - app: log-depl
+        - app: log
     spec:
       containers:
         - name:
