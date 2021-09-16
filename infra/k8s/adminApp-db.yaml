@@ -19,13 +19,13 @@ spec:
           image: redis:latest
           ports:
             - containerPort: 6379
-          volumes:
-            - name: admin-mount
-              hostPath:
-                path: /admin-mount/data
           volumeMounts:
             - name: admin-mount
               mountPath: /data
+      volumes:
+        - name: admin-mount
+          hostPath:
+            path: /admin-mount/data
 # ---
 # apiVersion: v1
 # kind: PersistentVolume

@@ -23,9 +23,9 @@ spec:
             - name: log-mount
               hostPath:
                 path: /log-mount/data
-          volumeMounts:
-            - name: log-mount
-              mountPath: /data
+      volumeMounts:
+        - name: log-mount
+          mountPath: /data
 # ---
 # apiVersion: v1
 # kind: PersistentVolume
