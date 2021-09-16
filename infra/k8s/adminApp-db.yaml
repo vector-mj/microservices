@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        - app: admin-db
+        app: admin-db
     spec:
       containers:
         - name: redis
