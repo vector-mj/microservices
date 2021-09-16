@@ -30,7 +30,7 @@ POST http://94.237.53.66:30007/create
 content-type: application/json
 
 {
-    "username":"sajjad23",
+    "username":"Ali@gmail.com",
     "password":"sj234.sE#"
 }
 
@@ -42,5 +42,5 @@ POST http://94.237.53.66:30007/exists
 Content-Type: application/json
 
 {
-    "rfid":"1631782078031-fa9c5794"
+    "rfid":"1631785469788-4a2a8f7d"
 }

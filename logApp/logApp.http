@@ -24,8 +24,8 @@ POST http://94.237.53.66:30008/gate
 Content-Type: application/json
 
 {
-    "gtype":"1",
-    "rfid":"1631782078031-fa9c5794"
+    "gtype":"0",
+    "rfid":"1631785469788-4a2a8f7d"
 }
 
 ###
