@@ -10,14 +10,14 @@ spec:
   template:
     metadata:
       labels:
-        - app: admin
+        app: admin
     spec:
       containers:
-        - name:
+        - name: adminapp-depl
           image: vectormj/adminapp
           env:
             - name: ADMINPORT
-              value: 8081
+              value: "8081"
           ports:
             - containerPort: 8081
 ---
@@ -31,4 +31,3 @@ spec:
   ports:
     - port: 8081
       protocol: TCP
-

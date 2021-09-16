@@ -10,14 +10,14 @@ spec:
   template:
     metadata:
       labels:
-        - app: log
+        app: log
     spec:
       containers:
-        - name:
-          image: vectormj/logapp
+        - name: logapp-depl
+          image: vectormj/adminapp
           env:
-            - name: LOGPORT
-              value: 8082
+            - name: ADMINPORT
+              value: "8082"
           ports:
             - containerPort: 8082
 ---
@@ -31,4 +31,3 @@ spec:
   ports:
     - port: 8082
       protocol: TCP
-
