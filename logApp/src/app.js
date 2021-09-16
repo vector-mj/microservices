@@ -5,7 +5,7 @@ const axios = require('axios')
 const redis = require('redis')
 const port = process.env.LOGPORT || 8082
 const Client = redis.createClient({
-    host: "localhost",
+    host: "logdb-srv",
     port: 6379
 })
 
