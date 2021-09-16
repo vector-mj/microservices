@@ -19,13 +19,13 @@ spec:
           image: redis:latest
           ports:
             - containerPort: 6379
-          volumes:
+          volumeMounts:
             - name: log-mount
-              hostPath:
-                path: /log-mount/data
-      volumeMounts:
+              mountPath: /data
+      volumes:
         - name: log-mount
-          mountPath: /data
+          hostPath:
+            path: /log-mount/data
 # ---
 # apiVersion: v1
 # kind: PersistentVolume
