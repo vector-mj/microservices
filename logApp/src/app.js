@@ -23,7 +23,7 @@ app.post("/gate", async (req, res) => {
         })
     }
     try {
-        const result = await axios.post('http://localhost:8081/exists', { rfid: rfid })
+        const result = await axios.post('http://admin-srv:8081/exists', { rfid: rfid })
         if (result.data.user != null) {
             console.log(JSON.stringify({ rfid: rfid, time: new Date().toISOString(), type: gtype }))
             Client.hset("logs", `${randomBytes(4).toString('hex')}-${rfid}`, JSON.stringify({ rfid: rfid, time: new Date().toISOString(), type: gtype }))

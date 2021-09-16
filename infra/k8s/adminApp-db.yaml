@@ -26,6 +26,19 @@ spec:
         - name: admin-mount
           hostPath:
             path: /admin-mount/data
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admindb-srv
+spec:
+  selector:
+    app: admin-db
+  ports:
+    - port: 6379
+      protocol: TCP
+
 # ---
 # apiVersion: v1
 # kind: PersistentVolume

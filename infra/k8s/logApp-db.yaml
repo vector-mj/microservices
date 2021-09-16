@@ -26,6 +26,18 @@ spec:
         - name: log-mount
           hostPath:
             path: /log-mount/data
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: logdb-srv
+spec:
+  selector:
+    app: log-db
+  ports:
+    - port: 6379
+      protocol: TCP
 # ---
 # apiVersion: v1
 # kind: PersistentVolume
