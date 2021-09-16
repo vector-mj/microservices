@@ -1,1 +1,5 @@
 GET http://localhost:8083/
+
+########   for kubernetes nodePort #########
+
+GET http://94.237.53.66:30007/

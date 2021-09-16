@@ -18,3 +18,29 @@ Content-Type: application/json
 {
     "rfid":"1631691633675-45f01a4f"
 }
+
+
+
+########   for kubernetes nodePort #########
+
+
+GET http://94.237.53.66:30007/
+###
+POST http://94.237.53.66:30007/create
+content-type: application/json
+
+{
+    "username":"sajjad23",
+    "password":"sj234.sE#"
+}
+
+###
+GET http://94.237.53.66:30007/users
+
+###
+POST http://94.237.53.66:30007/exists
+Content-Type: application/json
+
+{
+    "rfid":"1631776848266-2518d7ec"
+}
