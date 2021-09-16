@@ -19,31 +19,35 @@ spec:
           image: redis:latest
           ports:
             - containerPort: 6379
+          volumes:
+            - name: log-mount
+              hostPath:
+                path: /log-mount/data
           volumeMounts:
             - name: log-mount
               mountPath: /data
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: admin-redis-pv
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 300Mi
-  hostPath:
-    path: "/mnt/data"
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: admin-redis-pv
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 300Mi
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: admin-redis-pv
+# spec:
+#   storageClassName: manual
+#   accessModes:
+#     - ReadWriteOnce
+#   capacity:
+#     storage: 300Mi
+#   hostPath:
+#     path: "/mnt/data"
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: admin-redis-pv
+# spec:
+#   storageClassName: manual
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 300Mi
