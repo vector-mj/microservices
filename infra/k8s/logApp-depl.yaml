@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: logapp-depl
-          image: vectormj/adminapp
+          image: vectormj/logapp
           env:
             - name: ADMINPORT
               value: "8082"
