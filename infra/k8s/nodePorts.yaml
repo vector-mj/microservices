@@ -30,7 +30,7 @@ kind: Ingress
 metadata:
   name: ingress-net
   annotations:
-    nginx.ingress.kubernetes.io/app-root: /
+    # nginx.ingress.kubernetes.io/app-root: /
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
