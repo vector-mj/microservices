@@ -35,20 +35,20 @@ spec:
   rules:
     - http:
         paths:
-          - path: /admin
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: admin-srv
                 port:
                   number: 8081
-          - path: /log
-            pathType: Prefix
-            backend:
-              service:
-                name: log-srv
-                port:
-                  number: 8082
+          # - path: /
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: log-srv
+          #       port:
+          #         number: 8082
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
