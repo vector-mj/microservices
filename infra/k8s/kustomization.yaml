@@ -1,5 +1,3 @@
-namePrefix: dev-
-
 resources:
   - adminApp-depl.yaml
   - adminApp-db.yaml
