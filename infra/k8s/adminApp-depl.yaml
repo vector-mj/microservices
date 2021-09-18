@@ -27,7 +27,7 @@ metadata:
   name: admin-srv
 spec:
   selector:
-    app: admin-depl
+    app: admin
   ports:
     - port: 8081
       protocol: TCP

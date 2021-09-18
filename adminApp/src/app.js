@@ -4,7 +4,7 @@ const app = express()
 const { randomBytes } = require('crypto')
 
 const Client = redis.createClient({
-    host: 'admindb-srv',
+    host: 'localhost', // admindb-srv
     port: 6379
 })
 console.log('Redis is running')
