@@ -1,3 +1,4 @@
+--- # ---
 # apiVersion: v1
 # kind: Service
 # metadata:
@@ -23,7 +24,6 @@
 #     - port: 8082
 #       targetPort: 8082
 #       nodePort: 30008
-# ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -32,19 +32,31 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - http:
+    - host: foo.bar.com
+      http:
         paths:
-          - path: "/admin"
+          - path: /admin
             pathType: Prefix
             backend:
               service:
                 name: admin-srv
                 port:
                   number: 8081
-          - path: "/log"
+          - path: /log
             pathType: Prefix
             backend:
               service:
                 name: log-srv
                 port:
                   number: 8082
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress
+spec:
+  defaultBackend:
+    service:
+      name: admin-srv
+      port:
+        number: 8081
