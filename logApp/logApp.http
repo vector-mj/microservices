@@ -33,3 +33,6 @@ Content-Type: application/json
 
 ###
 GET http://94.237.53.66:30008/allLogs
+
+###
+GET http://94.237.53.66:30008/loginlogs
