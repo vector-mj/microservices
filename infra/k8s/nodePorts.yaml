@@ -33,7 +33,6 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: foo.bar.com
       http:
         paths:
           - path: /admin
