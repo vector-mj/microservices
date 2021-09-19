@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
+const route = express.Router()
 const { randomBytes } = require('crypto')
 const axios = require('axios')
 const morgan = require('morgan')
 const redis = require('redis')
+
 
 const port = process.env.LOGPORT || 8082
 const Client = redis.createClient({
@@ -13,11 +15,12 @@ const Client = redis.createClient({
 
 app.use(express.json())
 app.use(morgan('combined'))
-app.get('/', (req, res) => {
+
+route.get('/', (req, res) => {
     res.send('log app')
 })
 
-app.post("/gate", async (req, res) => {
+route.post("/gate", async (req, res) => {
     const { gtype, rfid } = req.body;
     if (!gtype || !rfid) {
         return res.send({
@@ -52,7 +55,7 @@ app.post("/gate", async (req, res) => {
     }
 })
 
-app.get('/allLogs', (req, res) => {
+route.get('/allLogs', (req, res) => {
     try {
         Client.hgetall("logs", (err, reply) => {
             if (err || reply == null) {
@@ -72,7 +75,7 @@ app.get('/allLogs', (req, res) => {
 })
 
 
-app.get('/loginlogs', (req, res) => {
+route.get('/loginlogs', (req, res) => {
     try {
         Client.hgetall("login", (err, reply) => {
             if (err || reply == null) {
@@ -91,6 +94,7 @@ app.get('/loginlogs', (req, res) => {
     }
 })
 
+app.use('/log',route);
 
 app.listen(port, () => {
     console.log(`log app is running on port ${port}`)

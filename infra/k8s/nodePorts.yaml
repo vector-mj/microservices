@@ -29,25 +29,43 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-net
+  name: ingress-admin
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: $2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+
 spec:
   rules:
   - host: hello-world.info
     http:
       paths:
       - pathType: Prefix
-        path: "/admin"
+        path: /(admin)(.*)
         backend:
           service:
             name: admin-depl
             port:
               number: 8081
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-log
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /log$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+
+spec:
+  rules:
+  - host: hello-world.info
+    http:
+      paths:
       - pathType: Prefix
-        path: "/log"
+        path: /(log)(.*)
         backend:
           service:
             name: log-depl
             port:
               number: 8082
+
