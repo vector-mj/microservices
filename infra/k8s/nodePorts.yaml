@@ -25,7 +25,6 @@
 #       targetPort: 8082
 #       nodePort: 30008
 
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -36,16 +35,16 @@ metadata:
 
 spec:
   rules:
-  - host: hello-world.info
-    http:
-      paths:
-      - pathType: Prefix
-        path: /(admin)(.*)
-        backend:
-          service:
-            name: admin-depl
-            port:
-              number: 8081
+    - host: hello-world.info
+      http:
+        paths:
+          - pathType: Prefix
+            path: /(admin)(.*)
+            backend:
+              service:
+                name: admin-depl
+                port:
+                  number: 8081
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -58,14 +57,13 @@ metadata:
 
 spec:
   rules:
-  - host: hello-world.info
-    http:
-      paths:
-      - pathType: Prefix
-        path: /(log)(.*)
-        backend:
-          service:
-            name: log-depl
-            port:
-              number: 8082
-
+    - host: hello-world.info
+      http:
+        paths:
+          - pathType: Prefix
+            path: /(log)(.*)
+            backend:
+              service:
+                name: log-depl
+                port:
+                  number: 8082
