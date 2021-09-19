@@ -6,7 +6,7 @@ const redis = require('redis')
 const { DH_CHECK_P_NOT_SAFE_PRIME } = require('constants')
 const port = process.env.LOGPORT || 8082
 const Client = redis.createClient({
-    host: "logdb-srv", // logdb-srv
+    host: "log-db", // logdb-srv
     port: 6379
 })
 
@@ -24,7 +24,7 @@ app.post("/gate", async (req, res) => {
         })
     }
     try {
-        const result = await axios.post('http://admin-srv:8081/exists', { rfid: rfid }) // admin-srv
+        const result = await axios.post('http://admin-depl:8081/exists', { rfid: rfid }) // admin-srv
         if (result.data.user != null) {
             console.log(JSON.stringify({ rfid: rfid, time: new Date().toISOString(), type: gtype }))
             let d = new Date();

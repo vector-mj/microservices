@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adminapp-db
+  name: admin-db
 spec:
   replicas: 1
   strategy:
@@ -31,7 +31,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: admindb-srv
+  name: admin-db
 spec:
   selector:
     app: admin-db

@@ -21,6 +21,7 @@ GET http://localhost:8082/loginlogs
 
 
 GET http://94.237.53.66:30008/
+HOST: hello-world.info
 
 ###
 POST http://94.237.53.66:30008/gate

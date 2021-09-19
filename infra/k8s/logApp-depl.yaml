@@ -6,14 +6,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: log
+      app: log-depl
   template:
     metadata:
       labels:
-        app: log
+        app: log-depl
     spec:
       containers:
-        - name: logapp-depl
+        - name: log-depl
           image: vectormj/logapp
           env:
             - name: ADMINPORT
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: log-srv
+  name: log-depl
 spec:
   selector:
     app: log-depl

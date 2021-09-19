@@ -6,7 +6,7 @@ const port = process.env.INFOPORT || 8083;
 
 app.get('/', async (req, res) => {
     try {
-        const result = await axios('http://log-srv:8082/allLogs') //log-srv
+        const result = await axios('http://log-depl:8082/allLogs') //log-srv
         return res.send(result.data.logs)
     } catch (err) {
         return res.send(err)
