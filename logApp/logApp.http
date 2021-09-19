@@ -6,8 +6,8 @@ POST http://localhost:8082/gate
 Content-Type: application/json
 
 {
-    "gtype":"0",
-    "rfid":"1631940375367-a214ead8"
+    "gtype":"1",
+    "rfid":"1632039871174-ae07b3fa"
 }   
 
 ###
@@ -21,7 +21,7 @@ GET http://localhost:8082/loginlogs
 
 
 GET http://94.237.53.66:30008/
-HOST: hello-world.info
+
 
 ###
 POST http://94.237.53.66:30008/gate
@@ -37,3 +37,28 @@ GET http://94.237.53.66:30008/allLogs
 
 ###
 GET http://94.237.53.66:30008/loginlogs
+
+
+########   for kubernetes ingress #########
+
+
+GET http://94.237.53.66/log
+HOST: hello-world.info
+
+###
+POST http://94.237.53.66/log/gate
+HOST: hello-world.info
+Content-Type: application/json
+
+{
+    "gtype":"1",
+    "rfid":"1631935726064-a41f83e2"
+}
+
+###
+GET http://94.237.53.66/log/allLogs
+HOST: hello-world.info
+
+###
+GET http://94.237.53.66/log/loginlogs
+HOST: hello-world.info

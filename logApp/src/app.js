@@ -2,16 +2,17 @@ const express = require('express')
 const app = express()
 const { randomBytes } = require('crypto')
 const axios = require('axios')
+const morgan = require('morgan')
 const redis = require('redis')
-const { DH_CHECK_P_NOT_SAFE_PRIME } = require('constants')
+
 const port = process.env.LOGPORT || 8082
 const Client = redis.createClient({
-    host: "log-db", // logdb-srv
+    host: "log-db", // log-db
     port: 6379
 })
 
 app.use(express.json())
-
+app.use(morgan('combined'))
 app.get('/', (req, res) => {
     res.send('log app')
 })
@@ -24,7 +25,7 @@ app.post("/gate", async (req, res) => {
         })
     }
     try {
-        const result = await axios.post('http://admin-depl:8081/exists', { rfid: rfid }) // admin-srv
+        const result = await axios.post('http://admin-depl:8081/exists', { rfid: rfid }) // admin-depl
         if (result.data.user != null) {
             console.log(JSON.stringify({ rfid: rfid, time: new Date().toISOString(), type: gtype }))
             let d = new Date();

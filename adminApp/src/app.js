@@ -2,14 +2,16 @@ const express = require('express')
 const redis = require('redis')
 const app = express()
 const { randomBytes } = require('crypto')
+const morgan = require('morgan')
 
 const Client = redis.createClient({
-    host: 'admin-db',
+    host: 'admin-db', //admin-db
     port: 6379
 })
 console.log('Redis is running')
 
 app.use(express.json())
+app.use(morgan('combined'))
 const port = process.env.ADMINPORT || 8081
 
 app.get('/', (req, res) => {

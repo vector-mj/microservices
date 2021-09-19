@@ -16,7 +16,7 @@ POST http://localhost:8081/exists
 Content-Type: application/json
 
 {
-    "rfid":"1631940064069-741e5d86"
+    "rfid":"1632039871174-ae07b3fa"
 }
 
 
@@ -25,6 +25,7 @@ Content-Type: application/json
 
 
 GET http://94.237.53.66:30007/
+
 ###
 POST http://94.237.53.66:30007/create
 content-type: application/json
@@ -39,6 +40,35 @@ GET http://94.237.53.66:30007/users
 
 ###
 POST http://94.237.53.66:30007/exists
+Content-Type: application/json
+
+{
+    "rfid":"1631935739464-4a180a19"
+}
+
+########   for kubernetes ingress #########
+
+
+GET http://94.237.53.66/admin/
+HOST: hello-world.info
+
+###
+POST http://94.237.53.66/admin/create
+HOST: hello-world.info
+content-type: application/json
+
+{
+    "username":"Ali@gmail.com",
+    "password":"sj234.sE#"
+}
+
+###
+GET http://94.237.53.66/admin/users
+HOST: hello-world.info
+
+###
+POST http://94.237.53.66/admin/exists
+HOST: hello-world.info
 Content-Type: application/json
 
 {
