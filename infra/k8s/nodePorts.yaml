@@ -1,4 +1,3 @@
-
 ##############################################
 #              (NodePort Services)
 # apiVersion: v1
@@ -67,16 +66,15 @@ metadata:
 
 spec:
   rules:
-  - host: hello-world.info
-    http:
-      paths:
-      - pathType: Prefix
-        path: /(log)(.*)
-        backend:
-          service:
-            name: log-depl
-            port:
-              number: 8082
-
+    - host: hello-world.info
+      http:
+        paths:
+          - pathType: Prefix
+            path: /(log)(.*)
+            backend:
+              service:
+                name: log-depl
+                port:
+                  number: 8082
 #      (End Ingress for log service)
 ##############################################
