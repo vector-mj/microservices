@@ -6,20 +6,25 @@ const axios = require('axios')
 const morgan = require('morgan')
 const redis = require('redis')
 
-
+// Service port
 const port = process.env.LOGPORT || 8082
+// Redis connection
 const Client = redis.createClient({
-    host: "log-db", // log-db
+    host: "log-db", // service name in kubernetes
     port: 6379
 })
 
+// For request body
 app.use(express.json())
+// Log request
 app.use(morgan('combined'))
 
+// Root route
 route.get('/', (req, res) => {
     res.send('log app')
 })
 
+// Create login or logout log
 route.post("/gate", async (req, res) => {
     const { gtype, rfid } = req.body;
     if (!gtype || !rfid) {
@@ -28,7 +33,7 @@ route.post("/gate", async (req, res) => {
         })
     }
     try {
-        const result = await axios.post('http://admin-depl:8081/exists', { rfid: rfid }) // admin-depl
+        const result = await axios.post('http://admin-depl:8081/exists', { rfid: rfid }) // service name in kubernetes
         if (result.data.user != null) {
             console.log(JSON.stringify({ rfid: rfid, time: new Date().toISOString(), type: gtype }))
             let d = new Date();
@@ -55,6 +60,7 @@ route.post("/gate", async (req, res) => {
     }
 })
 
+// Show all logs
 route.get('/allLogs', (req, res) => {
     try {
         Client.hgetall("logs", (err, reply) => {
@@ -74,7 +80,7 @@ route.get('/allLogs', (req, res) => {
     }
 })
 
-
+// just show login logs
 route.get('/loginlogs', (req, res) => {
     try {
         Client.hgetall("login", (err, reply) => {

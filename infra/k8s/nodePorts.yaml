@@ -1,4 +1,6 @@
-# ---
+
+##############################################
+#              (NodePort Services)
 # apiVersion: v1
 # kind: Service
 # metadata:
@@ -24,8 +26,10 @@
 #     - port: 8082
 #       targetPort: 8082
 #       nodePort: 30008
+##############################################
 
-
+##############################################
+#      (Start Ingress for admin service)
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -47,6 +51,11 @@ spec:
             port:
               number: 8081
 
+#      (End Ingress for admin service)
+##############################################
+
+##############################################
+#      (Start Ingress for log service)
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -69,3 +78,5 @@ spec:
             port:
               number: 8082
 
+#      (End Ingress for log service)
+##############################################

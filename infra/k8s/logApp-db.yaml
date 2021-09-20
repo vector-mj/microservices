@@ -1,3 +1,5 @@
+##############################################
+#         (start log db deployment)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,8 +28,13 @@ spec:
         - name: log-mount
           hostPath:
             path: /log-mount/data
-
 ---
+#         (end log db deployment)
+##############################################
+
+##############################################
+#           (start log db service)
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -38,28 +45,6 @@ spec:
   ports:
     - port: 6379
       protocol: TCP
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: admin-redis-pv
-# spec:
-#   storageClassName: manual
-#   accessModes:
-#     - ReadWriteOnce
-#   capacity:
-#     storage: 300Mi
-#   hostPath:
-#     path: "/mnt/data"
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: admin-redis-pv
-# spec:
-#   storageClassName: manual
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 300Mi
+
+#             (end log db service)
+##############################################
