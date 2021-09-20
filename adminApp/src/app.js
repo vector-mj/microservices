@@ -4,20 +4,27 @@ const app = express()
 const { randomBytes } = require('crypto')
 const morgan = require('morgan')
 
+// Redis Connection 
 const Client = redis.createClient({
-    host: 'admin-db', //admin-db
+    host: 'admin-db', // service name in kubernetes
     port: 6379
 })
 console.log('Redis is running')
 
+// Body requests
 app.use(express.json())
+// For log requests
 app.use(morgan('combined'))
+
+// Services port
 const port = process.env.ADMINPORT || 8081
 
+// Root route
 app.get('/', (req, res) => {
     res.send('Hi Admin')
 })
 
+// Show all users
 app.get('/users', (req, res) => {
     try {
         Client.HGETALL("users", (err, reply) => {
@@ -38,6 +45,8 @@ app.get('/users', (req, res) => {
     }
 })
 
+// Showing that user exist or not
+// respones = user info (username,passowrd,rfid,create time)
 app.post('/exists', (req, res) => {
     const { rfid } = req.body;
     if (!rfid) {
@@ -62,6 +71,8 @@ app.post('/exists', (req, res) => {
     }
 })
 
+// Create user with username,password
+// Response = user rfid
 app.post('/create', (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {

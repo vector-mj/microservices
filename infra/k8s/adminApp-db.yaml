@@ -1,3 +1,5 @@
+##############################################
+#         (start Admin db deployment)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -28,6 +30,12 @@ spec:
             path: /admin-mount/data
 
 ---
+#         (end Admin db deployment)
+##############################################
+
+##############################################
+#     (start Admin db service)
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -39,28 +47,5 @@ spec:
     - port: 6379
       protocol: TCP
 
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: admin-redis-pv
-# spec:
-#   storageClassName: manual
-#   accessModes:
-#     - ReadWriteOnce
-#   capacity:
-#     storage: 300Mi
-#   hostPath:
-#     path: "/mnt/data"
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: admin-redis-pv
-# spec:
-#   storageClassName: manual
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 300Mi
+#     (end Admin db service)
+##############################################
